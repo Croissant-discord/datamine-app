@@ -1,0 +1,8 @@
+[package]
+name = "croissant-cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.98"
+croissant-core = { path = "../../librarys/croissant-core" }

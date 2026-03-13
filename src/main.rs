@@ -11,7 +11,7 @@ use croissant_core::{
 
 fn start_reading( token: &str ) -> Result<()> {
     
-    // debug()?;
+    println!("Hello, World!!");
 
     Ok(())
 }

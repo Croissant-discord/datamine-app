@@ -1,6 +1,6 @@
 <template>
-  <div class="main-container" style="max-width: 400px;">
-    <div class="Hero" style="">
+  <div class="main-container" style="">
+    <div class="Hero">
       180000
     </div>
 
@@ -18,35 +18,42 @@
     margin: 0;
     padding: 0;
     background-color: #3c3c3c;
-
   }
 </style>
 
 <style scoped>
-.Hero {
-  width: 100%; 
-  height: 150px; 
+  .Hero {
+    width: 100%; 
+    max-width: 700px;
 
-  font-family: 'Bungee', sans-serif;
-  color: #fff;
-  background-image: url('@/assets/hero.svg');
-  background-size: cover;
+    height: 150px; 
 
-  background-color: #CE7F1F; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-}
+    font-family: 'Bungee', sans-serif;
+    color: #fff;
+    background-image: url('@/assets/hero.svg');
+    background-size: cover;
 
-nav {
-  background-color: #1d1d1d;
-  padding: 10px;
-  gap: 10px;
-  display: flex;
-}
+    background-color: #CE7F1F; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+  }
 
-nav :deep(a) {
-  color: #fff;
-  text-decoration: none;
-}
+  nav {
+    background-color: #1d1d1d;
+    padding: 10px;
+    gap: 10px;
+    display: flex;
+  }
+
+  nav :deep(a) {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  @media (min-width: 700px) {
+    .main-container {
+      max-width: 400px;
+    }
+  }
 </style>

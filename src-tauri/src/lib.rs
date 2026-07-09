@@ -4,6 +4,19 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
+#[tauri::command]
+fn profile() {
+}
+
+#[tauri::command]
+fn saved_profiles() -> Vec<String> {
+    vec![]
+}
+
+#[tauri::command]
+fn run_datamaning(token: &str) {
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()

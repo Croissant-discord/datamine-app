@@ -3,6 +3,7 @@
 
 pub mod gateway;
 
-fn main() {
-    croissant_lib::run()
+#[tokio::main]
+async fn main() {
+    croissant_lib::run();
 }

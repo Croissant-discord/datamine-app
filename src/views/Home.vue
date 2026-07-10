@@ -1,7 +1,28 @@
+<script setup>
+import { ref, onMounted } from 'vue'
+import { invoke } from '@tauri-apps/api/core'
+
+const profiles = ref([])
+
+async function loadProfiles() {
+  profiles.value = await invoke('profile')
+}
+
+async function CreateProfile() {
+	profiles.value = await invoke('saved_profiles')
+}
+
+onMounted(() => {
+  loadProfiles()
+})
+</script>
+
 <template>
 	<div class="main-container">
-		Home
+		{{profiles}}
 	</div>
+
+	<div @click="CreateProfile" style="width: 20px; height: 20px; background-color: #1d1d1d;"></div>
 </template>
 
 <style scoped>

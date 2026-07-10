@@ -9,7 +9,8 @@ async function loadProfiles() {
 }
 
 async function CreateProfile() {
-	profiles.value = await invoke('saved_profiles')
+	await invoke('saved_profiles')
+	await loadProfiles()
 }
 
 onMounted(() => {
@@ -22,15 +23,21 @@ onMounted(() => {
 		{{profiles}}
 	</div>
 
-	<div @click="CreateProfile" style="width: 20px; height: 20px; background-color: #1d1d1d;"></div>
+	<div @click="CreateProfile" style="cursor: pointer; width: 20px; height: 20px; background-color: #1d1d1d;"></div>
 </template>
-
+	
 <style scoped>
 	.main-container {
 		width: 100%;
-		height: auto;
+		height: 290px;
 		color: #fff;
+		overflow-y: scroll;
 		padding: 10px;
 		box-sizing: border-box;
+
+		/* Firefox */
+		scrollbar-width: thin;
+		scrollbar-color: #1d1d1d transparent;
 	}
+
 </style>

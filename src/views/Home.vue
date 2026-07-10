@@ -29,7 +29,7 @@ onMounted(() => {
 <style scoped>
 	.main-container {
 		width: 100%;
-		height: 290px;
+		height: 280px;
 		color: #fff;
 		overflow-y: scroll;
 		padding: 10px;

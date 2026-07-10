@@ -1,18 +1,25 @@
+<script setup>
+  
+</script>
+
 <template>
   <div class="page-wrapper">
     <div class="main-container">
       <div class="Hero">
         180000
       </div>
-      <nav style="background-color: #1d1d1d;">
-        <router-link to="/">Home</router-link>
-        <router-link to="/settings">Settings</router-link>
-      </nav>
+      <div style="background-color: #1d1d1d; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
+        <span>Accounts</span>
+        <span>+</span>
+      </div>
       <router-view />
     </div>
-    <div class="side-box"></div>
+    <div class="side-box">
+      <router-view name="profile"/>
+    </div>
   </div>
 </template>
+
 <style>
   html, body {
     margin: 0;
@@ -20,6 +27,7 @@
     background-color: #3c3c3c;
   }
 </style>
+
 <style scoped>
   .page-wrapper {
     display: flex;
@@ -28,11 +36,10 @@
   }
   .main-container {
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
   }
   .Hero {
     width: 100%; 
-    max-width: 700px;
     height: 150px; 
     font-family: 'Bungee', sans-serif;
     color: #fff;
@@ -49,7 +56,7 @@
     gap: 10px;
     display: flex;
   }
-  nav :deep(a) {
+  a {
     color: #fff;
     text-decoration: none;
   }
@@ -57,7 +64,7 @@
     display: none;
     background-color: #1d1d1d;
   }
-  @media (min-width: 700px) {
+  @media (min-width: 800px) {
     .main-container {
       flex-shrink: 0;
       max-width: 400px;

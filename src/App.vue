@@ -35,6 +35,7 @@
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    background-color: #3c3c3c;
   }
   .main-container {
     width: 100%;
@@ -43,6 +44,7 @@
 
   .side-box {
     display: none;
+    padding: 10px;
     background-color: #1d1d1d;
   }
 

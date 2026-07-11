@@ -5,22 +5,32 @@ import { invoke } from '@tauri-apps/api/core'
 const profiles = ref([])
 
 async function loadProfiles() {
-  profiles.value = await invoke('profile')
+  try {
+    profiles.value = await invoke('profile')
+  } catch (e) {
+    console.error('loadProfiles failed:', e)
+  }
 }
 
 async function CreateProfile() {
-	await invoke('saved_profiles')
+	await invoke('add_profile', {token: ""})
 	await loadProfiles()
 }
 
 onMounted(() => {
-  loadProfiles()
+  setTimeout(() => {
+    loadProfiles()
+  }, 500)
 })
 </script>
 
 <template>
 	<div class="main-container">
-		{{profiles}}
+		<div v-for="profile in profiles">
+			<div class="profile-container">
+				{{profile}}
+			</div>
+		</div>
 	</div>
 
 	<div @click="CreateProfile" style="cursor: pointer; width: 20px; height: 20px; background-color: #1d1d1d;"></div>
@@ -38,6 +48,15 @@ onMounted(() => {
 		/* Firefox */
 		scrollbar-width: thin;
 		scrollbar-color: #1d1d1d transparent;
+	}
+
+	.profile-container {
+		width: 100%;
+		height: 70px;
+		margin-bottom: 10px;
+		cursor: pointer;
+		background-color: #1d1d1d;
+		border-radius: 10px;
 	}
 
 </style>

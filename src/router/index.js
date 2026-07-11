@@ -7,7 +7,7 @@ const routes = [
     path: '/',
     components: {
       default: HomeView,
-      profile: ProfileView ,
+      profile_info: ProfileView ,
     },
   }
 ]

@@ -26,37 +26,93 @@ onMounted(() => {
 
 <template>
 	<div class="main-container">
-		<div v-for="profile in profiles">
-			<div class="profile-container">
-				{{profile}}
-			</div>
-		</div>
-	</div>
+     <div class="Hero">
+        180000
+      </div>
+      <div style="background-color: #1d1d1d; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
+        <span>Accounts</span>
+        <span class="add_profile" @click="CreateProfile">+</span>
+      </div>
 
-	<div @click="CreateProfile" style="cursor: pointer; width: 20px; height: 20px; background-color: #1d1d1d;"></div>
+     <div class="profile-list">
+				<div v-for="profile in profiles">
+					<div class="profile-container">
+						{{profile}}
+					</div>
+				</div>     	
+     </div>
+	</div>
 </template>
 	
 <style scoped>
 	.main-container {
 		width: 100%;
-		height: 280px;
+		
 		color: #fff;
-		overflow-y: scroll;
-		padding: 10px;
+		
 		box-sizing: border-box;
+		
 
 		/* Firefox */
 		scrollbar-width: thin;
 		scrollbar-color: #1d1d1d transparent;
 	}
 
+	.profile-list {
+		overflow-y: scroll;
+		padding: 10px;
+		height: 280px;
+	}
+
 	.profile-container {
 		width: 100%;
 		height: 70px;
 		margin-bottom: 10px;
+		
 		cursor: pointer;
 		background-color: #1d1d1d;
 		border-radius: 10px;
 	}
 
+</style>
+
+
+<style scoped>
+  .page-wrapper {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .Hero {
+    width: 100%; 
+    height: 150px; 
+    font-family: 'Bungee', sans-serif;
+    color: #fff;
+    background-image: url('@/assets/hero.svg');
+    background-size: cover;
+    background-color: #CE7F1F; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+  }
+
+  .add_profile {
+    cursor: pointer;
+  }
+
+  .side-box {
+    display: none;
+    background-color: #1d1d1d;
+  }
+
+  @media (min-width: 800px) {
+    .main-container {
+      flex-shrink: 0;
+      max-width: 400px;
+    }
+    .side-box {
+      display: block;
+      flex: 1;
+    }
+  }
 </style>

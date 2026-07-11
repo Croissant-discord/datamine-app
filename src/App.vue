@@ -1,21 +1,18 @@
 <script setup>
-  
+  import { invoke } from '@tauri-apps/api/core'
+
+  async function CreateProfile() {
+    await invoke('add_profile', {token: ""})
+  }
 </script>
 
 <template>
   <div class="page-wrapper">
     <div class="main-container">
-      <div class="Hero">
-        180000
-      </div>
-      <div style="background-color: #1d1d1d; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
-        <span>Accounts</span>
-        <span>+</span>
-      </div>
       <router-view />
     </div>
     <div class="side-box">
-      <router-view name="profile"/>
+      <router-view name="profile_info"/>
     </div>
   </div>
 </template>
@@ -25,6 +22,11 @@
     margin: 0;
     padding: 0;
     background-color: #3c3c3c;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
   }
 </style>
 
@@ -38,32 +40,12 @@
     width: 100%;
     max-width: 800px;
   }
-  .Hero {
-    width: 100%; 
-    height: 150px; 
-    font-family: 'Bungee', sans-serif;
-    color: #fff;
-    background-image: url('@/assets/hero.svg');
-    background-size: cover;
-    background-color: #CE7F1F; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-  }
-  nav {
-    background-color: #1d1d1d;
-    padding: 10px;
-    gap: 10px;
-    display: flex;
-  }
-  a {
-    color: #fff;
-    text-decoration: none;
-  }
+
   .side-box {
     display: none;
     background-color: #1d1d1d;
   }
+
   @media (min-width: 800px) {
     .main-container {
       flex-shrink: 0;

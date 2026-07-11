@@ -8,30 +8,32 @@ pub static SURREAL: LazyLock<Surreal<Db>> = LazyLock::new(Surreal::init);
 use serde::{Serialize, Deserialize};
 
 #[derive(Debug, SurrealValue, Serialize, Deserialize)]
-struct Person {
-    name: String,
-    age: u8,
+struct Profile {
+    token: String,
+    email: String,
+    username: String,
 }
 
 #[derive(Debug, SurrealValue, Serialize, Deserialize)]
-struct PersonRecord {
+struct ProfileRecord {
     id: RecordId,
-    name: String,
-    age: u8,
+    token: String,
+    email: String,
+    username: String,
 }
 
 #[tauri::command]
-async fn profile() -> Result<Vec<PersonRecord>, String> {
+async fn profile() -> Result<Vec<ProfileRecord>, String> {
     Ok(
-        SURREAL.select("person").await.map_err(|e| e.to_string())?
+        SURREAL.select("profiles").await.map_err(|e| e.to_string())?
     )
 }
 
 #[tauri::command]
-async fn saved_profiles() -> Result<PersonRecord, String> {
-    let created: Option<PersonRecord> = SURREAL
-        .create("person")
-        .content(Person { name: "Tyson".to_string(), age: 32 })
+async fn add_profile(token: &str) -> Result<ProfileRecord, String> {
+    let created: Option<ProfileRecord> = SURREAL
+        .create("profiles")
+        .content(Profile { token: token.to_string(), email: "".to_string(), username: "Tyson".to_string() })
         .await
         .map_err(|e| e.to_string())?;
 
@@ -51,7 +53,7 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
-            saved_profiles,
+            add_profile,
             profile,
         ])
         .run(tauri::generate_context!())

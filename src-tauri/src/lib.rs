@@ -6,6 +6,8 @@ pub mod commands;
 pub mod http;
 pub mod types;
 
+pub mod error;
+
 use crate::commands::*;
 
 pub static SURREAL: LazyLock<Surreal<Db>> = LazyLock::new(Surreal::init);
